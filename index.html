@@ -19,6 +19,26 @@
     <footer>
         <p>&copy; 2025 Vente de Services</p>
     </footer>
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const services = [
+                { name: "Streaptease", price: "0€" },
+                { name: "Sucer le bras gauche d'Eliot", price: "0€" },
+            ];
+
+            const serviceList = document.getElementById("service-list");
+
+            services.forEach(service => {
+                const div = document.createElement("div");
+                div.classList.add("service");
+                div.innerHTML = `<h3>${service.name}</h3><p>Prix: ${service.price}</p><button onclick="validerAchat('${service.name}', '${service.price}')">Acheter</button>`;
+                serviceList.appendChild(div);
+            });
+        });
+
+        function validerAchat(service, prix) {
+            window.location.href = `validation.html?service=${encodeURIComponent(service)}&prix=${encodeURIComponent(prix)}`;
+        }
+    </script>
 </body>
 </html>
